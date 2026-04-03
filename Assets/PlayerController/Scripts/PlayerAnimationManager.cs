@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FDAY2025.Player
+namespace GAD210.P2.Iteration1.Player
 {
     [RequireComponent(typeof(Animator))]
     public class PlayerAnimationManager : MonoBehaviour

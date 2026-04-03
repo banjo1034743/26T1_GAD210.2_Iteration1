@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace FDAY2025.Player
+namespace GAD210.P2.Iteration1.Player
 {
     public class InputManager : MonoBehaviour
     {
@@ -12,6 +12,8 @@ namespace FDAY2025.Player
         public Vector2 direction;
 
         protected float buttonFloat;
+
+        public bool InteractButtonPressed { get { return buttonBool; } }
         protected bool buttonBool;
 
         protected float escapeFloat;

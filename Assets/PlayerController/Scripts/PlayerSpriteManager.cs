@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FDAY2025.Player
+namespace GAD210.P2.Iteration1.Player
 {
     /// <summary>
     /// This is the class that handles changing the sprites of our player

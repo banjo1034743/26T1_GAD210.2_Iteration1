@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace FDAY2025.Player
+namespace GAD210.P2.Iteration1.Player
 {
     /// <summary>
     /// This class handles the controlling of the player in the game, including movement and other interactions
     /// </summary>
     [RequireComponent(typeof(PlayerAnimationManager))]
     [RequireComponent(typeof(InputManager))]
-    public class PlayerController : MonoBehaviour
+    public class MovementController : MonoBehaviour
     {
         #region Variables
 

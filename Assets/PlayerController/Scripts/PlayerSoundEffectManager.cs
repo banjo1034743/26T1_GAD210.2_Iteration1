@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FDAY2025.Player
+namespace GAD210.P2.Iteration1.Player
 {
     /// <summary>
     /// This class handle playing sound effects for the player
