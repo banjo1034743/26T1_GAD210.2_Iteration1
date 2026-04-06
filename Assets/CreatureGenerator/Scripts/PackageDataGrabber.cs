@@ -77,11 +77,5 @@ public class PackageDataGrabber : MonoBehaviour
         InitialisrVariables();
     }
 
-    // //Update is called once per frame
-    void Update()
-    {
-        //SearchForPackage(); // Only called after the player presses enter in input field
-    }
-
     #endregion
 }
