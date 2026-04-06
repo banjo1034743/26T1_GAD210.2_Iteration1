@@ -1,3 +1,4 @@
+using GAD210.P2.Iteration1.DialogueSystem;
 using UnityEngine;
 
 namespace GAD210.P2.Iteration1.Player
@@ -38,6 +39,10 @@ namespace GAD210.P2.Iteration1.Player
             {
                 ToggleSelector(true);
             }
+            else
+            {
+                ToggleSelector(false);
+            }
         }
 
         private void ToggleSelector(bool value)
@@ -45,13 +50,40 @@ namespace GAD210.P2.Iteration1.Player
             _selector.SetActive(value);
         }
 
-        private void CheckIfEnabledSelectorSprites()
+        // Ooops! Done in animator. I forgor
+        //private void RotateSelectorWithPlayer()
+        //{
+        //    switch (_inputManager.GetDirectionValue().x)
+        //    {
+        //        case -1f:
+        //            _selector.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -90f));
+        //            break;
+        //        case 1f:
+        //            _selector.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90f));
+        //            break;
+        //    }
+
+        //    switch (_inputManager.GetDirectionValue().y)
+        //    {
+        //        case -1f:
+        //            _selector.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -180f));
+        //            break;
+        //        case 1f:
+        //            _selector.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0f));
+        //            break;
+        //    }
+        //}
+
+        private void InitialiseSelector()
         {
             if (_enableSprites == true)
             {
                 _selectorSprite.enabled = true;
                 _selectorAreaSprite.enabled = true;
             }
+
+            _selector.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -180f));
+            _selector.SetActive(false);
         }
 
         #endregion
@@ -61,14 +93,14 @@ namespace GAD210.P2.Iteration1.Player
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            CheckIfEnabledSelectorSprites();
-            ToggleSelector(false);
+            InitialiseSelector();
         }
 
         // Update is called once per frame
         void Update()
         {
             Interact();
+            //RotateSelectorWithPlayer();
         }
 
         #endregion

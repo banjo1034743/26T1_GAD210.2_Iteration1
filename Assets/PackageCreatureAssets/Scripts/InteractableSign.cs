@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class InteractableSign : MonoBehaviour
+namespace GAD210.P2.Iteration1.Player
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class InteractableSign : Interactable
     {
-        
-    }
+        #region Unity Methods
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        protected override void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (CheckIfSelector(collision) == true)
+            {
+                Debug.Log("Display sign text!");
+            }
+        }
+
+        #endregion
     }
 }
