@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class MenuPrompter : MonoBehaviour
+public class MenuManager : MonoBehaviour
 {
     #region Variables
 

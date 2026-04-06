@@ -58,33 +58,6 @@ public class CreatureGenerator : MonoBehaviour
 
     #region Methods
 
-    //public void CollectPackageData(PackageInfo packageInfo)
-    //{
-    //    // Author
-    //    AuthorInfo authorInfo = packageInfo.author;
-    //    _authorName = authorInfo.name;
-
-    //    // Category
-    //    _packageCategory = packageInfo.category;
-
-    //    // Date Published
-    //    if (packageInfo.datePublished != null)
-    //    {
-    //        _datePublished = packageInfo.datePublished.Value.Year;
-    //    }
-
-    //    // Display Name
-    //    _packageDisplayName = packageInfo.displayName;
-
-    //    Debug.Log("Author name = " + _authorName);
-    //    Debug.Log("Category = " + _packageCategory);
-    //    Debug.Log("Date = " + _datePublished);
-    //    Debug.Log("Name = " + _packageDisplayName);
-
-    //    DisplayCreatureInfo();
-    //    DisplayPackageData();
-    //}
-
     public void CollectPackageData(string authorName, string packageName, int datePublished)
     {
         _authorName = authorName;
