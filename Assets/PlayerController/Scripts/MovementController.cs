@@ -42,8 +42,8 @@ namespace GAD210.P2.Iteration1.Player
         [Tooltip("This is the script we use to access the method for enabling animation triggers when needed.")]
         [SerializeField] protected PlayerAnimationManager playerAnimationManager;
 
-        [Tooltip("This is the script we use to acces the method for opening and closing the exit window.")]
-        [SerializeField] protected ExitWindow exitWindow;
+        //[Tooltip("This is the script we use to acces the method for opening and closing the exit window.")]
+        //[SerializeField] protected ExitWindow exitWindow;
 
         [Tooltip("This is the script we use to access the input values of the player.")]
         [SerializeField] protected InputManager inputManager;
@@ -163,13 +163,13 @@ namespace GAD210.P2.Iteration1.Player
             }
         }
 
-        protected virtual void OpenEscape()
-        {
-            if (inputManager.GetEscapeBoolValue())
-            {
-                exitWindow.ToggleExitPrompt(true);
-            }
-        }
+        //protected virtual void OpenEscape()
+        //{
+        //    if (inputManager.GetEscapeBoolValue())
+        //    {
+        //        exitWindow.ToggleExitPrompt(true);
+        //    }
+        //}
 
         protected virtual void GetObjects()
         {
@@ -207,7 +207,7 @@ namespace GAD210.P2.Iteration1.Player
         protected virtual void Update()
         {
             MovePlayer();
-            OpenEscape();
+            //OpenEscape();
         }
 
         #endregion

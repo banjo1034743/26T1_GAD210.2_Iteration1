@@ -1,92 +1,95 @@
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+namespace GAD210.P2.Iteration1.PackageCreatures
 {
-    #region Static Declaration
-
-    public static GameManager instance;
-
-    private void Awake()
+    public class GameManager : MonoBehaviour
     {
-        if (instance == null)
+        #region Static Declaration
+
+        public static GameManager instance;
+
+        private void Awake()
         {
-            instance = this;
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(this);
+            }
         }
-        else
+
+        #endregion
+
+        #region Variables
+
+        public bool IsOnPackageNameScreen { get { return _isOnPackageNameScreen; } set { _isOnPackageNameScreen = value; } }
+
+        [SerializeField] private GameObject _packageNameScreen;
+
+        public bool IsOnCreatureGeneratorScreen { get { return _isOnCreatureGeneratorScreen; } set { _isOnCreatureGeneratorScreen = value; } }
+
+        [SerializeField] private GameObject _creatureGeneratorScreen;
+
+        private bool _isOnPackageNameScreen;
+
+        private bool _isOnCreatureGeneratorScreen;
+
+        [SerializeField] private CreatureGenerator _creatureGenerator;
+
+        #endregion
+
+        #region Variables
+
+        private void SwitchToCreatureGenerator()
         {
-            Destroy(this);
+            if (_isOnPackageNameScreen == false)
+            {
+                _packageNameScreen.SetActive(false);
+
+                _creatureGeneratorScreen.SetActive(true);
+
+                _isOnCreatureGeneratorScreen = true;
+            }
         }
-    }
 
-    #endregion
-
-    #region Variables
-
-    public bool IsOnPackageNameScreen { get { return _isOnPackageNameScreen; } set { _isOnPackageNameScreen = value; } }
-
-    [SerializeField] private GameObject _packageNameScreen;
-
-    public bool IsOnCreatureGeneratorScreen { get { return _isOnCreatureGeneratorScreen; } set { _isOnCreatureGeneratorScreen = value; } }
-
-    [SerializeField] private GameObject _creatureGeneratorScreen;
-
-    private bool _isOnPackageNameScreen;
-
-    private bool _isOnCreatureGeneratorScreen;
-
-    [SerializeField] private CreatureGenerator _creatureGenerator;
-
-    #endregion
-
-    #region Variables
-
-    private void SwitchToCreatureGenerator()
-    {
-        if (_isOnPackageNameScreen == false)
+        public void SwitchToPackageName()
         {
-            _packageNameScreen.SetActive(false);
+            if (_isOnCreatureGeneratorScreen == false)
+            {
+                _packageNameScreen.SetActive(true);
 
-            _creatureGeneratorScreen.SetActive(true);
+                _creatureGenerator.ResetVariables();
 
-            _isOnCreatureGeneratorScreen = true;
+                _creatureGeneratorScreen.SetActive(false);
+
+                _isOnPackageNameScreen = true;
+            }
         }
-    }
 
-    public void SwitchToPackageName()
-    {
-        if (_isOnCreatureGeneratorScreen == false)
+        private void InitialiseGame()
         {
-            _packageNameScreen.SetActive(true);
-
-            _creatureGenerator.ResetVariables();
-
-            _creatureGeneratorScreen.SetActive(false);
-
             _isOnPackageNameScreen = true;
+
+            _isOnCreatureGeneratorScreen = false;
         }
+
+        #endregion
+
+        #region Unity Methods
+
+        private void Update()
+        {
+            SwitchToCreatureGenerator();
+            SwitchToPackageName();
+        }
+
+        private void Start()
+        {
+            InitialiseGame();
+        }
+
+        #endregion
     }
-
-    private void InitialiseGame()
-    {
-        _isOnPackageNameScreen = true;
-
-        _isOnCreatureGeneratorScreen = false;
-    }
-
-    #endregion
-
-    #region Unity Methods
-
-    private void Update()
-    {
-        SwitchToCreatureGenerator();
-        SwitchToPackageName();
-    }
-
-    private void Start()
-    {
-        InitialiseGame();
-    }
-
-    #endregion
 }

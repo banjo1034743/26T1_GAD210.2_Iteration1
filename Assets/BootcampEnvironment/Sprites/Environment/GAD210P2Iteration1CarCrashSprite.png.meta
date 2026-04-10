@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c5ec5b1ce67388c4bbeee248274af4b8
+guid: 59208f616b9d228468c9a099ff451cb6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 574701645804258658
-    second: GAD210P1Prototype2ExitIcon_0
+      213: -2145395018303918198
+    second: GAD210P2Iteration1CarCrashSprite_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,12 +72,12 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
-    crunchedCompression: 0
+    crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GAD210P1Prototype2ExitIcon_0
+      name: GAD210P2Iteration1CarCrashSprite_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 0
-        width: 240
-        height: 256
+        x: 11
+        y: 64
+        width: 494
+        height: 401
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 265cef91a10c9f700800000000000000
-      internalID: 574701645804258658
+      spriteID: a8f2a1ff8960a32e0800000000000000
+      internalID: -2145395018303918198
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      GAD210P1Prototype2ExitIcon_0: 574701645804258658
+      GAD210P2Iteration1CarCrashSprite_0: -2145395018303918198
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

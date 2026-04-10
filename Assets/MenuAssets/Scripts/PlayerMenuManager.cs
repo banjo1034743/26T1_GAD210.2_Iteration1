@@ -1,25 +1,45 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class MenuManager : MonoBehaviour
+public class PlayerMenuManager : MonoBehaviour
 {
     #region Variables
 
     [Header("Input System")]
 
+    [Space(5)]
+
     [SerializeField] private InputActionAsset _inputActions;
 
     private InputAction _exitAction;
 
-    [Header("Exit Prompt")]
+    [Header("Menu")]
 
-    [SerializeField] private GameObject _exitPromptWindow;
+    [Space(5)]
+
+    [SerializeField] private GameObject _menuScreen;
 
     [SerializeField] private EventSystem _eventSystem;
 
-    [SerializeField] private GameObject _firstSelectedButton;
+    [SerializeField] private Button _backButton;
+
+    [SerializeField] private Button _generatePackageCreatureButton;
+
+    [Header("Creature Generator Screen")]
+
+    [Space(5)]
+
+    [SerializeField] private TMP_InputField _packageNameInputField;
+
+    [Header("Package Creature Screen")]
+
+    [Space(5)]
+
+    [SerializeField] private Button _confirmButton;
 
     #endregion
 
@@ -35,13 +55,33 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void SelectMenuScreen()
+    {
+        _backButton.Select();
+    }
+
+    public void ActivatePackageInputField()
+    {
+        _packageNameInputField.ActivateInputField();
+    }
+
+    public void SelectPackageCreatureScreen()
+    {
+        _confirmButton.Select();
+    }
+
+    public void DisableCreatureGeneratorButton()
+    {
+        _generatePackageCreatureButton.gameObject.SetActive(false);
+    }
+
     private void PromptExit()
     {
         if (_exitAction.IsPressed() == true)
         {
             Debug.Log("registered input");
-            _exitPromptWindow.SetActive(true);
-            _eventSystem.firstSelectedGameObject = _firstSelectedButton;
+            _menuScreen.SetActive(true);
+            _eventSystem.firstSelectedGameObject = _backButton.gameObject;
         }
     }
 
@@ -54,7 +94,7 @@ public class MenuManager : MonoBehaviour
             Debug.Log("ExitAction is not null");
         }
 
-        _exitPromptWindow.SetActive(false);
+        _menuScreen.SetActive(false);
     }
 
     #endregion
