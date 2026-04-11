@@ -15,6 +15,8 @@ namespace GAD210.P2.Iteration1.Shop
 
         [SerializeField] private Button _firstSelectedButton;
 
+        [SerializeField] private Button _insuffecientFundsWindow;
+
         [Header("Items")]
 
         [Space(5)]
@@ -61,6 +63,10 @@ namespace GAD210.P2.Iteration1.Shop
 
                         PlayerItemManager.instance.DisplayItemIcon(_purchaseableItems[0].ItemSprite);
                     }
+                    else
+                    {
+                        DisplayInsuffecientFundsWindow();
+                    }
                     break;
                 case "Sandwich":
                     if (QueryAllowablePurchase(1) == true)
@@ -69,17 +75,32 @@ namespace GAD210.P2.Iteration1.Shop
 
                         PlayerItemManager.instance.DisplayItemIcon(_purchaseableItems[1].ItemSprite);
                     }
+                    else
+                    {
+                        DisplayInsuffecientFundsWindow();
+                    }
                     break;
                 case "PackageCreatureGenerator":
                     if (QueryAllowablePurchase(2) == true)
                     {
                         Debug.Log("What- How did you get that much money? Oh my goodness the prototypes broken now oh no oh god");
                     }
+                    else
+                    {
+                        DisplayInsuffecientFundsWindow();
+                    }
                     break;
                 default:
                     Debug.Log("Item is not recognised");
                     break;
             }
+        }
+
+        public void DisplayInsuffecientFundsWindow()
+        {
+            _insuffecientFundsWindow.gameObject.SetActive(true);
+
+            _insuffecientFundsWindow.Select();
         }
 
         private bool QueryAllowablePurchase(int itemIndex)
