@@ -25,17 +25,31 @@ namespace GAD210.P2.Iteration1.Player
 
         public virtual void Movement(InputAction.CallbackContext context)
         {
-            direction = context.ReadValue<Vector2>();
-            Debug.Log(direction);
+            if (PlayerFreezer.instance.CantMove == false)
+            {
+                direction = context.ReadValue<Vector2>();
+                Debug.Log(direction);
+            }
+            else
+            {
+                direction = Vector2.zero;
+            }
         }
 
         public virtual void Interact(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (PlayerFreezer.instance.CantInteract == false)
             {
-                buttonBool = true;
+                if (context.performed)
+                {
+                    buttonBool = true;
+                }
+                else if (context.canceled)
+                {
+                    buttonBool = false;
+                }
             }
-            else if (context.canceled)
+            else
             {
                 buttonBool = false;
             }

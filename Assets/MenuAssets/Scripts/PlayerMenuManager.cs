@@ -72,6 +72,7 @@ public class PlayerMenuManager : MonoBehaviour
 
     public void DisableCreatureGeneratorButton()
     {
+        // TODO: Need to change selected button to something esle after this is disabled
         _generatePackageCreatureButton.gameObject.SetActive(false);
     }
 
