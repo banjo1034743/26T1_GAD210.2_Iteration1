@@ -24,8 +24,6 @@ namespace GAD210.P2.Iteration1.PackageCreatures
 
         [Space(5)]
 
-        [SerializeField] private PlayerPackageCreatureManager _playerPackageCreatureManager;
-
         [SerializeField] private PlayerMenuManager _playerMenuManager;
 
         #endregion
@@ -115,7 +113,7 @@ namespace GAD210.P2.Iteration1.PackageCreatures
 
             // Set as player's package manager
 
-            _playerPackageCreatureManager.SetPackageCreatureAsPlayers(_packageCreatureList[creature]);
+            PlayerPackageCreatureManager.instance.SetPackageCreatureAsPlayers(_packageCreatureList[creature]);
         }
 
         public void ResetVariables()

@@ -1,4 +1,5 @@
 using GAD210.P2.Iteration1.Player;
+using GAD210.P2.Iteration1.Shop;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,10 +12,16 @@ namespace GAD210.P2.Iteration1.Microgame
         [Header("Microgame UI")]
 
         [Space(5)]
-        
+
+        [SerializeField] private GameObject _jawsOfLifeUI;
+
         [SerializeField] private Slider _jawsOfLifeSlider;
 
         [SerializeField] private Button _jawsOfLifeButton;
+
+        [Header("Microgame Parameters")]
+
+        [Space(5)]
 
         [SerializeField] private float _sliderStartingValue;
 
@@ -22,20 +29,65 @@ namespace GAD210.P2.Iteration1.Microgame
 
         [SerializeField] private float _sliderDecreaseSpeed;
 
+        [SerializeField] private float _delayBetweenWinDuration;
+
+        [Header("Scripts")]
+
+        [Space(5)]
+
+        [SerializeField] private CarCrashManager _carCrashManager;
+
+        //---
+
+        private Timer delayBetweenWinTimer;
+
         #endregion
 
         #region Methods
 
+        // Called by hidden button player presses
         public void IncreaseSliderValue()
         {
-            _jawsOfLifeSlider.value += _sliderIncreaseAmount;
+            if (_hasWon == false)
+            {
+                _jawsOfLifeSlider.value += _sliderIncreaseAmount;
+            }
         }
 
         private void DecreaseSliderValue()
         {
-            if (_jawsOfLifeSlider.value > 0)
+            if (_hasWon == false)
             {
-                _jawsOfLifeSlider.value = Mathf.Lerp(_jawsOfLifeSlider.value, 0, _sliderDecreaseSpeed);
+                if (_jawsOfLifeSlider.value > 0)
+                {
+                    _jawsOfLifeSlider.value = Mathf.Lerp(_jawsOfLifeSlider.value, 0, _sliderDecreaseSpeed);
+                }
+            }
+        }
+
+        private void CheckIfWon()
+        {
+            if (_hasWon == false)
+            {
+                if (_jawsOfLifeSlider.value > 0.95f)
+                {
+                    // Play SFX
+
+                    _hasWon = true;
+
+                    delayBetweenWinTimer.Restart();
+                }
+            }
+        }
+
+        private void CheckForClosingMicrogame()
+        {
+            if (_hasWon == true && delayBetweenWinTimer.HasExpired == true)
+            {
+                _carCrashManager.EnableIncidentCompletionWindow();
+                PlayerMoneyManager.instance.UpdateMoney(10);
+
+                _jawsOfLifeUI.SetActive(false);
             }
         }
 
@@ -46,6 +98,8 @@ namespace GAD210.P2.Iteration1.Microgame
             PlayerFreezer.instance.CantInteract = true;
 
             _jawsOfLifeSlider.value = _sliderStartingValue;
+
+            delayBetweenWinTimer.Duration = 5f;
 
             _jawsOfLifeButton.Select();
         }
@@ -62,6 +116,9 @@ namespace GAD210.P2.Iteration1.Microgame
         protected override void Update()
         {
             DecreaseSliderValue();
+
+            CheckIfWon();
+            CheckForClosingMicrogame();
         }
 
         #endregion

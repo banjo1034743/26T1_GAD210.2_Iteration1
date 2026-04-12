@@ -17,6 +17,12 @@ namespace GAD210.P2.Iteration1.Shop
 
         [SerializeField] private Button _insuffecientFundsWindow;
 
+        [SerializeField] private Button _sucessfulPurchaseWindow;
+
+        [SerializeField] private GameObject _outOfStockIconJawsOfLife;
+
+        [SerializeField] private GameObject _outOfStockIconSandwich;
+
         [Header("Items")]
 
         [Space(5)]
@@ -62,6 +68,10 @@ namespace GAD210.P2.Iteration1.Shop
                         PlayerItemManager.instance.HasJawsOfLife = true;
 
                         PlayerItemManager.instance.DisplayItemIcon(_purchaseableItems[0].ItemSprite);
+
+                        DisplaySucessfulPurchaseWindow();
+                        
+                        _outOfStockIconJawsOfLife.SetActive(true);
                     }
                     else
                     {
@@ -74,6 +84,8 @@ namespace GAD210.P2.Iteration1.Shop
                         PlayerMoneyManager.instance.UpdateMoney(-_purchaseableItems[1].ItemPrice); // - to subtract from player money
 
                         PlayerItemManager.instance.DisplayItemIcon(_purchaseableItems[1].ItemSprite);
+
+                        DisplaySucessfulPurchaseWindow();
                     }
                     else
                     {
@@ -94,6 +106,13 @@ namespace GAD210.P2.Iteration1.Shop
                     Debug.Log("Item is not recognised");
                     break;
             }
+        }
+
+        public void DisplaySucessfulPurchaseWindow()
+        {
+            _sucessfulPurchaseWindow.gameObject.SetActive(true);
+
+            _sucessfulPurchaseWindow.Select();
         }
 
         public void DisplayInsuffecientFundsWindow()

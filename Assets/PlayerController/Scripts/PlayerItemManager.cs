@@ -30,7 +30,7 @@ namespace GAD210.P2.Iteration1.Player
 
         [Space(5)]
 
-        private List<Image> _itemHUDIcons = new List<Image>();
+        [SerializeField] private List<Image> _itemHUDIcons = new List<Image>();
 
         [Header("Jaws of Life")]
 
@@ -47,10 +47,11 @@ namespace GAD210.P2.Iteration1.Player
         // Method for displaying icon on HUD for purchased items
         public void DisplayItemIcon(Sprite imageToDisplay)
         {
-            foreach (var icon in _itemHUDIcons)
+            foreach (Image icon in _itemHUDIcons)
             {
                 if (icon.sprite == null)
                 {
+                    Debug.Log("Displaying image!");
                     icon.sprite = imageToDisplay;
                     return;
                 }

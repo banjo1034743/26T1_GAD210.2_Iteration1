@@ -1,4 +1,3 @@
-using GAD210.P2.Iteration1.Microgame;
 using GAD210.P2.Iteration1.Player;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,11 +12,16 @@ namespace GAD210.P2.Iteration1.Environment
         [SerializeField] private List<string> _affirmativeInteractText = new List<string>();
 
         [TextArea]
-        [SerializeField] private List<string> _deniedInteractText = new List<string>();
+        [SerializeField] private List<string> _deniedInteractInpupText = new List<string>();
+
+        [TextArea]
+        [SerializeField] private List<string> _deniedInteractJawsOfLifeText = new List<string>();
 
         private int _affirmativeInteractTextIndex = 0;
 
-        private int _deniedInteractTextIndex = 0;
+        private int _deniedInteractInpupTextIndex = 0;
+
+        private int _deniedInteractJawsOfLifeTextIndex = 0;
 
         [SerializeField] private GameObject _jawsOfLifeMicrogame;
 
@@ -29,7 +33,7 @@ namespace GAD210.P2.Iteration1.Environment
         {
             if (CheckIfSelector(other) == true)
             {
-                if (PlayerItemManager.instance.HasJawsOfLife == true)
+                if (PlayerPackageCreatureManager.instance.HasInpup == true && PlayerItemManager.instance.HasJawsOfLife == true)
                 {
                     if (_affirmativeInteractTextIndex < _affirmativeInteractText.Count - 1)
                     {
@@ -45,17 +49,30 @@ namespace GAD210.P2.Iteration1.Environment
                         _affirmativeInteractTextIndex = 0;
                     }
                 }
-                else
+                else if (PlayerPackageCreatureManager.instance.HasInpup == false)
                 {
-                    if (_deniedInteractTextIndex < _deniedInteractText.Count - 1)
+                    if (_deniedInteractInpupTextIndex < _deniedInteractInpupText.Count - 1)
                     {
-                        _textBoxDisplayer.Parse(_deniedInteractText[_deniedInteractTextIndex]);
-                        _deniedInteractTextIndex++;
+                        _textBoxDisplayer.Parse(_deniedInteractInpupText[_deniedInteractInpupTextIndex]);
+                        _deniedInteractInpupTextIndex++;
                     }
                     else
                     {
                         _textBoxDisplayer.HideTextbox();
-                        _deniedInteractTextIndex = 0;
+                        _deniedInteractInpupTextIndex = 0;
+                    }
+                }
+                else if (PlayerItemManager.instance.HasJawsOfLife == false)
+                {
+                    if (_deniedInteractJawsOfLifeTextIndex < _deniedInteractJawsOfLifeText.Count - 1)
+                    {
+                        _textBoxDisplayer.Parse(_deniedInteractJawsOfLifeText[_deniedInteractJawsOfLifeTextIndex]);
+                        _deniedInteractJawsOfLifeTextIndex++;
+                    }
+                    else
+                    {
+                        _textBoxDisplayer.HideTextbox();
+                        _deniedInteractJawsOfLifeTextIndex = 0;
                     }
                 }
             }

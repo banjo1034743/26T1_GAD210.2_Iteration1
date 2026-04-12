@@ -1,3 +1,4 @@
+using GAD210.P2.Iteration1.Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -15,7 +16,7 @@ public class PlayerMenuManager : MonoBehaviour
 
     [SerializeField] private InputActionAsset _inputActions;
 
-    private InputAction _exitAction;
+    private InputAction _menuAction;
 
     [Header("Menu")]
 
@@ -76,21 +77,23 @@ public class PlayerMenuManager : MonoBehaviour
         _generatePackageCreatureButton.gameObject.SetActive(false);
     }
 
-    private void PromptExit()
+    private void OpenMenu()
     {
-        if (_exitAction.IsPressed() == true)
+        if (_menuAction.IsPressed() == true)
         {
             Debug.Log("registered input");
             _menuScreen.SetActive(true);
             _eventSystem.firstSelectedGameObject = _backButton.gameObject;
+
+            PlayerFreezer.instance.CantMove = true;
         }
     }
 
     private void InitialiseVariables()
     {
-        _exitAction = _inputActions.FindAction("Keyboard/Escape");
+        _menuAction = _inputActions.FindAction("Keyboard/Escape");
         
-        if (_exitAction != null)
+        if (_menuAction != null)
         {
             Debug.Log("ExitAction is not null");
         }
@@ -110,7 +113,7 @@ public class PlayerMenuManager : MonoBehaviour
 
     private void Update()
     {
-        PromptExit();
+        OpenMenu();
     }
 
     void OnEnable()

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4bbf1bf0f0e6cca48b3802239a8f0b42
+guid: 12acb1bac9482bb47b6d205f4c5786c2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9176992455325188451
-    second: GAD210P2Iteration1ShopSprite_0
+      213: 5507358136321018837
+    second: GAD210P2Iteration1CrossSprite_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 2
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GAD210P2Iteration1ShopSprite_0
+      name: GAD210P2Iteration1CrossSprite_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 170
-        height: 512
+        x: 1
+        y: 2
+        width: 255
+        height: 254
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,52 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 361091e240a3b5f70800000000000000
-      internalID: 9176992455325188451
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GAD210P2Iteration1ShopSprite_1
-      rect:
-        serializedVersion: 2
-        x: 170
-        y: 0
-        width: 170
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3d106ee417b9b65448453689d89c1940
-      internalID: 902153999
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GAD210P2Iteration1ShopSprite_2
-      rect:
-        serializedVersion: 2
-        x: 340
-        y: 0
-        width: 170
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 418e4ac484b8b1c4988470bad16d1af8
-      internalID: -1652638004
+      spriteID: 5db8546bb011e6c40800000000000000
+      internalID: 5507358136321018837
       vertices: []
       indices: 
       edges: []
@@ -192,9 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      GAD210P2Iteration1ShopSprite_0: 9176992455325188451
-      GAD210P2Iteration1ShopSprite_1: 902153999
-      GAD210P2Iteration1ShopSprite_2: -1652638004
+      GAD210P2Iteration1CrossSprite_0: 5507358136321018837
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
