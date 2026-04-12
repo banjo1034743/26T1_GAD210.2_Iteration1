@@ -5,7 +5,7 @@ using TMPro;
 
 namespace GAD210.P2.Iteration1.DialogueSystem
 {
-    public class ParseText : MonoBehaviour
+    public class TextParser : MonoBehaviour
     {
         #region Variables
 
@@ -85,9 +85,12 @@ namespace GAD210.P2.Iteration1.DialogueSystem
 
             CheckForSpecialCommands(dialogueLines[currentDialogueLine]);
 
-            dialogueText.text = dialogueLines[currentDialogueLine];
+            if (isActive == false)
+            {
+                dialogueText.text = dialogueLines[currentDialogueLine];
 
-            StartCoroutine(MakeTextVisible());
+                StartCoroutine(MakeTextVisible());
+            }
         }
 
         private void CheckForSpecialCommands(string dialogue)
@@ -120,6 +123,13 @@ namespace GAD210.P2.Iteration1.DialogueSystem
             else if (dialogue.Contains("InputtedName"))
             {
                 dialogueLines[currentDialogueLine] = dialogue.Replace("InputtedName", _nameSaver.PlayerName);
+            }
+            else if (dialogue.Contains("ButtonPrompt"))
+            {
+                _dialogueUIManager.ToggleTextElements(false);
+                _dialogueUIManager.ToggleButtonPrompt(true);
+
+                isActive = false;
             }
         }
 

@@ -61,6 +61,11 @@ namespace GAD210.P2.Iteration1.Environment
             }
         }
 
+        private void Start()
+        {
+            _jawsOfLifeMicrogame.SetActive(false);
+        }
+
         #endregion
     }
 }

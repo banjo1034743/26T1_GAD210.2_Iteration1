@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace GAD210.P2.Iteration1.DialogueSystem
 {
@@ -10,6 +11,12 @@ namespace GAD210.P2.Iteration1.DialogueSystem
         [SerializeField] private GameObject _textElements;
 
         [SerializeField] private GameObject _inputFieldElements;
+
+        [SerializeField] private TMP_InputField _inputField;
+
+        [SerializeField] private GameObject _buttonPromptElements;
+
+        [SerializeField] private Button _buttonPromptButton;
 
         #endregion
 
@@ -23,6 +30,21 @@ namespace GAD210.P2.Iteration1.DialogueSystem
         public void ToggleInputField(bool value)
         {
             _inputFieldElements.SetActive(value);
+
+            if (value == true)
+            {
+                _inputField.ActivateInputField();
+            }
+        }
+
+        public void ToggleButtonPrompt(bool value)
+        {
+            _buttonPromptElements.SetActive(value);
+
+            if (value == true)
+            {
+                _buttonPromptButton.Select();
+            }
         }
 
         #endregion
@@ -32,6 +54,8 @@ namespace GAD210.P2.Iteration1.DialogueSystem
         private void Start()
         {
             ToggleInputField(false);
+
+            ToggleButtonPrompt(false);
 
             ToggleTextElements(true);
         }
