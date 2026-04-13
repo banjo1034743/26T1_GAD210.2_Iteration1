@@ -9,8 +9,11 @@ namespace GAD210.P2.Iteration1.DialogueSystem
     {
         #region Variables
 
-        private int currentDialogueLine;
-        private int amountOfDialogueLines;
+        [SerializeField] private int currentDialogueLine = 0;
+        public int CurrentDialogueLine { get { return currentDialogueLine; } }
+
+        [SerializeField] private int amountOfDialogueLines;
+        public int AmountOfDialogueLines { get { return amountOfDialogueLines; } }
 
         [TextArea]
         [SerializeField] private List<string> dialogueLines = new List<string>();
@@ -85,7 +88,7 @@ namespace GAD210.P2.Iteration1.DialogueSystem
 
             CheckForSpecialCommands(dialogueLines[currentDialogueLine]);
 
-            if (isActive == false)
+            if (isActive)
             {
                 dialogueText.text = dialogueLines[currentDialogueLine];
 
@@ -164,7 +167,7 @@ namespace GAD210.P2.Iteration1.DialogueSystem
 
         #region Unity Methods
 
-        void Start()
+        void Awake()
         {
             InitialiseScript();
         }

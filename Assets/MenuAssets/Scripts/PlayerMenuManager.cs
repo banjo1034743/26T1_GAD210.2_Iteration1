@@ -83,7 +83,7 @@ public class PlayerMenuManager : MonoBehaviour
         {
             Debug.Log("registered input");
             _menuScreen.SetActive(true);
-            _eventSystem.firstSelectedGameObject = _backButton.gameObject;
+            _backButton.Select();
 
             PlayerFreezer.instance.CantMove = true;
         }
