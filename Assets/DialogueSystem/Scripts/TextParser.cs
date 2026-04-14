@@ -40,6 +40,24 @@ namespace GAD210.P2.Iteration1.DialogueSystem
 
         [SerializeField] private NameSaver _nameSaver;
 
+        //--
+
+        [Header("Timer Parameters")]
+
+        [Space(5)]
+
+        [SerializeField] private float _delayTimeBeforeCameraFlash;
+
+        private bool _calledCameraFlashTimer = false;
+
+        private bool _waitingForFadeOut = false;
+
+        private Timer _delayBeforeCameraFlashTimer;
+
+        //[SerializeField] private float _delayTimeBeforeFadingOut;
+
+        //private Timer _delayBeforeFadingOutTimer;
+
         #endregion
 
         #region Methods
@@ -55,6 +73,10 @@ namespace GAD210.P2.Iteration1.DialogueSystem
 
             isActive = true;
             //Debug.Log(currentDialogueLine);
+
+            // Set the durations of the timers
+            _delayBeforeCameraFlashTimer.Duration = _delayTimeBeforeCameraFlash;
+            //_delayBeforeFadingOutTimer.Duration = _delayTimeBeforeFadingOut;
 
             // Initialise text with first line
             Parse();
@@ -96,6 +118,31 @@ namespace GAD210.P2.Iteration1.DialogueSystem
             }
         }
 
+        private IEnumerator MakeTextVisible()
+        {
+            dialogueText.ForceMeshUpdate();
+            int totalVisibleChars = dialogueText.textInfo.characterCount;
+            int counter = 0;
+
+            while (true)
+            {
+                int visibleCount = counter % (totalVisibleChars + 1);
+                dialogueText.maxVisibleCharacters = visibleCount;
+
+                if (visibleCount >= totalVisibleChars)
+                {
+                    break;
+                }
+
+                counter += 1;
+                yield return new WaitForSeconds(timeBtwnChars);
+            }
+        }
+
+        #endregion
+
+        #region Special Commands
+
         private void CheckForSpecialCommands(string dialogue)
         {
             if (dialogue.Contains("TimeBeforeStarting"))
@@ -134,34 +181,50 @@ namespace GAD210.P2.Iteration1.DialogueSystem
 
                 isActive = false;
             }
-        }
-
-        private IEnumerator MakeTextVisible()
-        {
-            dialogueText.ForceMeshUpdate();
-            int totalVisibleChars = dialogueText.textInfo.characterCount;
-            int counter = 0;
-
-            while (true)
+            else if (dialogue.Contains("PlayerProfilePicture"))
             {
-                int visibleCount = counter % (totalVisibleChars + 1);
-                dialogueText.maxVisibleCharacters = visibleCount;
+                Debug.Log("Text contains PlayerProfilePicture");
 
-                if (visibleCount >= totalVisibleChars)
-                {
-                    break;
-                }
+                isActive = false;
 
-                counter += 1;
-                yield return new WaitForSeconds(timeBtwnChars);
+                dialogueLines[currentDialogueLine] = dialogue.Replace("PlayerProfilePicture", "");
+
+                dialogueText.text = dialogueLines[currentDialogueLine];
+
+                StartCoroutine(MakeTextVisible());
+
+                _delayBeforeCameraFlashTimer.Restart();
+
+                _calledCameraFlashTimer = true;
             }
         }
 
-        #endregion
+        private void CheckIfCanCameraFlash()
+        {
+            if (_calledCameraFlashTimer == true && _delayBeforeCameraFlashTimer.HasExpired == true)
+            {
+                Debug.Log("Met the conditions to Camera Flash");
 
-        #region Special Commands
+                _calledCameraFlashTimer = false;
+
+                _dialogueUIManager.PlayCameraFlash();
+
+                _waitingForFadeOut = true;
+            }
+        }
 
 
+        private void CheckIfCanContinueDialogueAfterFadeOut()
+        {
+            if (_waitingForFadeOut == true && FadeOutImage.instance.IsFading == false) // Check for bool so this isn't called early
+            {
+                Debug.Log("Met the conditions to continue dialogue");
+                _waitingForFadeOut = false;
+                isActive = true;
+
+                ParseDialogueOnInput(true);
+            }
+        }
 
         #endregion
 
@@ -175,6 +238,9 @@ namespace GAD210.P2.Iteration1.DialogueSystem
         void Update()
         {
             ParseDialogueOnInput(false);
+
+            CheckIfCanCameraFlash();
+            CheckIfCanContinueDialogueAfterFadeOut();
         }
 
         #endregion
