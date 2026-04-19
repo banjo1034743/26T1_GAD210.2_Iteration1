@@ -155,7 +155,7 @@ namespace GAD210.P2.Iteration1.DialogueSystem
                     string elapsedTime = _timeBeforeStarting.ElapsedTime.ToString() + " second";
                     dialogueLines[currentDialogueLine] = dialogue.Replace("TimeBeforeStarting", elapsedTime);
                 }
-                else if (_timeBeforeStarting.ElapsedTime > 1 || _timeBeforeStarting.ElapsedTime <= 0)
+                else if (_timeBeforeStarting.ElapsedTime > 1 || _timeBeforeStarting.ElapsedTime <= 1)
                 {
                     string elapsedTime = _timeBeforeStarting.ElapsedTime.ToString() + " seconds";
                     dialogueLines[currentDialogueLine] = dialogue.Replace("TimeBeforeStarting", elapsedTime);
