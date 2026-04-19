@@ -45,8 +45,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Noncollideable
+    uniqueID: 2766357679
+    locked: 0
+  - name: Trees
+    uniqueID: 3404728019
+    locked: 0
   - name: Player
     uniqueID: 2598104485
     locked: 0
   m_RenderingLayers:
   - Default
+  - Layer 1

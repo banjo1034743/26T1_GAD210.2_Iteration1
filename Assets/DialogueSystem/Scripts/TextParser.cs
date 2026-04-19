@@ -64,6 +64,8 @@ namespace GAD210.P2.Iteration1.DialogueSystem
 
         private void InitialiseScript()
         {
+            Debug.Log("Starting cutscene!");
+
             // Start with first line of dialogue
             currentDialogueLine = 0;
 
@@ -148,14 +150,14 @@ namespace GAD210.P2.Iteration1.DialogueSystem
             if (dialogue.Contains("TimeBeforeStarting"))
             {
                 Debug.Log("TimeBeforeStarting");
-                if (_timeBeforeStarting.ElapsedTime < 2)
+                if (_timeBeforeStarting.ElapsedTime == 1)
                 {
-                    string elapsedTime = Mathf.Round(_timeBeforeStarting.ElapsedTime).ToString() + " second";
+                    string elapsedTime = _timeBeforeStarting.ElapsedTime.ToString() + " second";
                     dialogueLines[currentDialogueLine] = dialogue.Replace("TimeBeforeStarting", elapsedTime);
                 }
-                else if (_timeBeforeStarting.ElapsedTime >= 2 || _timeBeforeStarting.ElapsedTime == 0)
+                else if (_timeBeforeStarting.ElapsedTime > 1 || _timeBeforeStarting.ElapsedTime <= 0)
                 {
-                    string elapsedTime = Mathf.Round(_timeBeforeStarting.ElapsedTime).ToString() + " seconds";
+                    string elapsedTime = _timeBeforeStarting.ElapsedTime.ToString() + " seconds";
                     dialogueLines[currentDialogueLine] = dialogue.Replace("TimeBeforeStarting", elapsedTime);
                 }
             }

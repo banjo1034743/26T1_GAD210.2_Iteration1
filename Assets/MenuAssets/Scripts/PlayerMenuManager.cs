@@ -79,7 +79,7 @@ public class PlayerMenuManager : MonoBehaviour
 
     private void OpenMenu()
     {
-        if (_menuAction.IsPressed() == true)
+        if (_menuAction.WasPerformedThisFrame() == true)
         {
             Debug.Log("registered input");
             _menuScreen.SetActive(true);
@@ -97,6 +97,8 @@ public class PlayerMenuManager : MonoBehaviour
         {
             Debug.Log("ExitAction is not null");
         }
+
+        //_backButton.Select();
 
         _menuScreen.SetActive(false);
     }

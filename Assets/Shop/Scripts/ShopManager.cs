@@ -70,12 +70,16 @@ namespace GAD210.P2.Iteration1.Shop
                         PlayerItemManager.instance.DisplayItemIcon(_purchaseableItems[0].ItemSprite);
 
                         DisplaySucessfulPurchaseWindow();
+
+                        EnvironmentSoundPlayer.instance.PlaySFXClipAt("Money", _sucessfulPurchaseWindow.transform.position, 1, false);
                         
                         _outOfStockIconJawsOfLife.SetActive(true);
                     }
                     else
                     {
                         DisplayInsuffecientFundsWindow();
+
+                        EnvironmentSoundPlayer.instance.PlaySFXClipAt("Failure", _insuffecientFundsWindow.transform.position, 1, false);
                     }
                     break;
                 case "Sandwich":
@@ -100,6 +104,7 @@ namespace GAD210.P2.Iteration1.Shop
                     else
                     {
                         DisplayInsuffecientFundsWindow();
+                        EnvironmentSoundPlayer.instance.PlaySFXClipAt("Failure", _insuffecientFundsWindow.transform.position, 1, false);
                     }
                     break;
                 default:

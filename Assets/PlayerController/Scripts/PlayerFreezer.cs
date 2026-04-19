@@ -25,11 +25,11 @@ namespace GAD210.P2.Iteration1.Player
         #region Variables
 
         // Will be used to make player not react to movement input when we want it to
-        private bool _cantMove;
+        [SerializeField] private bool _cantMove;
 
         public bool CantMove { get { return _cantMove; } set { _cantMove = value; } }
 
-        private bool _cantInteract;
+        [SerializeField] private bool _cantInteract;
 
         public bool CantInteract { get { return _cantInteract; } set { _cantInteract = value; } }
 

@@ -47,6 +47,10 @@ namespace GAD210.P2.Iteration1.DialogueSystem
                 {
                     _winScreen.SetActive(true);
                     _exitGameButton.Select();
+
+                    EnvironmentSoundPlayer.instance.PlaySFXClipAt("Victory Horn", _winScreen.transform.position, 1, false);
+                    EnvironmentSoundPlayer.instance.PlaySFXClipAt("Party Horn", _winScreen.transform.position, 1, false);
+                    EnvironmentSoundPlayer.instance.PlaySFXClipAt("Child Cheer", _winScreen.transform.position, 1, false);
                 }
             }
         }

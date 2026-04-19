@@ -7,10 +7,13 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/TitleScreen.unity
-    guid: bd98a96640c46694cabc2e4b8145f4d8
+    guid: 1a559dd2e75688f4a9605a00d5138d85
   - enabled: 1
     path: Assets/Scenes/ProfessorCutscene.unity
     guid: de87a25c435725a4c95674abc8747b33
+  - enabled: 1
+    path: Assets/Scenes/Bootcamp.unity
+    guid: 1ee488c7ccf68c64a9679031076d7869
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

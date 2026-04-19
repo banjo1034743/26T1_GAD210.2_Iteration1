@@ -24,7 +24,7 @@ namespace GAD210.P2.Iteration1
 
         #region Methods
 
-        public virtual void PlaySFXClipAt(string soundEffect, Vector3 pos, float volume)
+        public virtual void PlaySFXClipAt(string soundEffect, Vector3 pos, float volume, bool pitchShift)
         {
             Debug.Log("We're playing a SFX");
 
@@ -33,13 +33,17 @@ namespace GAD210.P2.Iteration1
             aSource.gameObject.transform.position = pos;
             aSource.clip = GetSFX(soundEffect);
             aSource.volume = volume;
-            //aSource.pitch = Random.Range(0.8f, 1.2f);
+
+            if (pitchShift == true)
+            {
+                aSource.pitch = Random.Range(0.8f, 1.2f);
+            }
 
             aSource.PlayOneShot(aSource.clip);
             Destroy(aSource.gameObject, aSource.clip.length);
         }
 
-        protected abstract AudioClip GetSFX(string soundEffect);
+        public abstract AudioClip GetSFX(string soundEffect);
 
         #endregion
     }

@@ -51,6 +51,8 @@ namespace GAD210.P2.Iteration1.Microgame
             if (_hasWon == false)
             {
                 _jawsOfLifeSlider.value += _sliderIncreaseAmount;
+
+                EnvironmentSoundPlayer.instance.PlaySFXClipAt("Metal Creak", _jawsOfLifeSlider.transform.position, 1, true);
             }
         }
 
@@ -72,6 +74,7 @@ namespace GAD210.P2.Iteration1.Microgame
                 if (_jawsOfLifeSlider.value > 0.95f)
                 {
                     // Play SFX
+                    EnvironmentSoundPlayer.instance.PlaySFXClipAt("Success", _jawsOfLifeSlider.transform.position, 1, false);
 
                     _hasWon = true;
 
@@ -99,7 +102,7 @@ namespace GAD210.P2.Iteration1.Microgame
 
             _jawsOfLifeSlider.value = _sliderStartingValue;
 
-            delayBetweenWinTimer.Duration = 5f;
+            delayBetweenWinTimer.Duration = 1f;
 
             _jawsOfLifeButton.Select();
         }

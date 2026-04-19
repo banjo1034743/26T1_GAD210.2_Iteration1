@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-namespace GAD210.P2.Iteration1.SceneLoader
+namespace GAD210.P2.Iteration1.SceneLoaderNamespace
 {
     public class SceneLoader : MonoBehaviour
     {
@@ -9,7 +10,9 @@ namespace GAD210.P2.Iteration1.SceneLoader
 
         private float _elapsedTime = 0;
 
-        [SerializeField] private TimeBeforeStarting _timeBeforeStarting; 
+        [SerializeField] private TimeBeforeStarting _timeBeforeStarting;
+
+        [SerializeField] private Button _startButton;
 
         #endregion
 
@@ -17,6 +20,7 @@ namespace GAD210.P2.Iteration1.SceneLoader
 
         public void LoadScene(int indexOfScene)
         {
+            Debug.Log("Loading scene!");
             SceneManager.LoadScene(indexOfScene);
         }
 
@@ -30,9 +34,22 @@ namespace GAD210.P2.Iteration1.SceneLoader
             _elapsedTime += Time.deltaTime;
         }
 
+        private void InitialiseVariables()
+        {
+            if (SceneManager.GetActiveScene().name == "TitleScreen")
+            {
+                _startButton.Select();
+            }
+        }
+
         #endregion
 
         #region Unity Methods
+
+        private void Start()
+        {
+            InitialiseVariables();
+        }
 
         private void Update()
         {

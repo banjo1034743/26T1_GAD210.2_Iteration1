@@ -114,7 +114,7 @@ namespace GAD210.P2.Iteration1.DialogueSystem
 
             ToggleButtonPrompt(false);
 
-            TogglePlayerProfileImage(false);
+            //TogglePlayerProfileImage(false);
 
             ToggleTextElements(true);
         }
